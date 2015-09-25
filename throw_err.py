@@ -3,7 +3,7 @@
 # This script raises an error based on 
 # user-supplied command line argument
 
-import sys
+import sys, os
 
 def print_usage():
     """Print usage and exit"""
@@ -21,25 +21,35 @@ if len(sys.argv) != 2:
 error_type = sys.argv[1]
 
 if error_type == "assertion":
-    raise AssertionError
+    assert 1/1 == 0 
+    print 1/1
 elif error_type == "io":
-    raise IOError
+    open('bruh.py')
 elif error_type == "import":
-    raise ImportError
+    from astropy import lel 
 elif error_type == "index":
-    raise IndexError
+    pup = [ 0, 1, 2, 3, 4, 5 ]
+    print pup[10] 
 elif error_type == "key":
-    raise KeyError
+    bun_names = { 'Apollo':1, 'Bunbun':2, 'Butthole':3}
+    print bun_names['bun']
 elif error_type == "name":
-    raise NameError
+    print(bruh)
 elif error_type == "os":
-    raise OSError
+    os.rmdir("breh")
 elif error_type == "type":
-    raise TypeError
+    bunbun = "bun" + 2
+    print bunbun
 elif error_type == "value":
-    raise ValueError
+    print(float("bunbun"))
 elif error_type == "zerodivision":
-    raise ZeroDivisionError
+    print(5/0) 
+elif error_type == "eof":
+    while True:
+        the_goodz = raw_input('Gimme yo digits gurl:')
+        print 'AWWW YISSS', the_goodz
+elif error_type == "syntax":
+    print('∠( ᐛ 」∠)＿')
 else:
     sys.stderr.write("Sorry, not able to throw a(n) ")
     sys.stderr.write(error_type + " error\n")
