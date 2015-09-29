@@ -4,19 +4,13 @@
 # user-supplied command line argument
 
 import sys, os
+import argparse
 
-def print_usage():
-    """Print usage and exit"""
-    sys.stderr.write("usage: python raise_err.py <error type>\n")
-    sys.stderr.write("available errors: \n")
-    sys.stderr.write("\tassertion, io, import, index\n")
-    sys.stderr.write("\tkey, name, os, type, value,\n")
-    sys.stderr.write("\tzerodivision\n")
-    sys.exit()
-
-# Check args
-if len(sys.argv) != 2:
-    print_usage()
+parse = argparse.ArgumentParser()
+parse.add_argument("error_type")
+result = parse.parse_args()
+# print(result)
+error_type = result.error_type
 
 error_type = sys.argv[1]
 
@@ -48,8 +42,6 @@ elif error_type == "eof":
     while True:
         the_goodz = raw_input('Gimme yo digits gurl:')
         print 'AWWW YISSS', the_goodz
-elif error_type == "syntax":
-    print('∠( ᐛ 」∠)＿')
 else:
     sys.stderr.write("Sorry, not able to throw a(n) ")
     sys.stderr.write(error_type + " error\n")
